@@ -144,8 +144,29 @@ min-width
 width
 
 ### Position 位置
-static
-fixed
-relative
-absolute
+- static: HTML元素的默认值，即没有定位，遵循正常的文档流对象
+静态定位的元素不会受到bot，top，left，right影响
+- fixed: 元素的位置相对于浏览器窗口是固定位置，即使窗口是滚动的他也不会动
+- relative：相对定位元素的定位是相对其正常位置
+- absolute：绝对定位元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么他的位置相对于<html>
+- sticky：基于用户的滚动位置来定，粘性
+重叠的元素
+元素的位置与文档流无关，所以他们可以有覆盖页面上的其他元素
+z-index属性定义了一个元素的对铁顺序（哪个元素应该放在前面或者后面）
+一个元素可以有正数或负数的堆叠顺序
+```css
+img{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+}
+```
+
+### Overflow 溢出
+- visible
+- hidden
+- scroll 会被剪枝，但是浏览器会显示混动条以便查看其余内容
+- auto 如果内容被剪枝，则浏览器会显示滚动条以便查看其余的内容
+- inherit
 
