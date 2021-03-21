@@ -19,3 +19,18 @@
     |initial|
     |inherit|指定 background-attachment 的设置应该从父元素继承。|
 - background-position 设置背景图像的起始位置。
+
+### CSS文本
+文本颜色 color
+文本方向 direction
+字符间距 letter-spacing
+行高 line-height
+对齐元素中的文本 text-align
+向文本添加修饰 text-decoration
+缩进元素中文本的首行 text-indent
+文本阴影 text-shadow
+控制元素中的字母 text-transform
+设置或返回文本是否被重写 unicode-bidi
+元素垂直对齐 vertical-align
+元素中空白的处理方式 white-space
+设置字间距 word-spacing
