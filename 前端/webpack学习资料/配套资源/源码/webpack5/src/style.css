@@ -1,0 +1,49 @@
+#box {
+    width:200px;
+    height:200px;
+    color:red;
+    background: green;
+    display: flex;
+    backface-visibility: hidden;
+}
+
+#box2 {
+    width:200px;
+    height:200px;
+    color:red;
+    background: green;
+    display: flex;
+    backface-visibility: hidden;
+}
+
+#box3 {
+    width:200px;
+    height:200px;
+    color:red;
+    background: green;
+    display: flex;
+    backface-visibility: hidden;
+}
+#img1 {
+    width:200px;
+    height:80px;
+    background-image: url('./lmonkey.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#img2 {
+     width:200px;
+     height:80px;
+     background-image: url('./eduplayer.jpg');
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
+ }
+
+#img3 {
+    width:200px;
+    height:80px;
+    background-image: url('./eduwork.gif');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

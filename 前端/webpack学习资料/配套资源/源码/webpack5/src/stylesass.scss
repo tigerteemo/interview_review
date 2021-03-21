@@ -1,0 +1,11 @@
+$width:100px;
+$height:100px;
+
+#box3 {
+  width:100px *3;
+  height:$height * 2;
+  background:blue;
+  color:yellow;
+  display: flex;
+  backface-visibility: hidden;
+}

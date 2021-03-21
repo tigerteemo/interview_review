@@ -1,0 +1,1 @@
+(()=>{var e={855:e=>{e.exports={one:1,add:function(e,o){return e+o},demo:function(e){return e}}},266:(e,o,r)=>{const{one:t,add:n,demo:s}=r(855);let d=n(t,2);e.exports={three:d}}},o={};function r(t){var n=o[t];if(void 0!==n)return n.exports;var s=o[t]={exports:{}};return e[t](s,s.exports,r),s.exports}(()=>{const{three:e}=r(266);console.log(e)})()})();
