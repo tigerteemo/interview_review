@@ -109,3 +109,149 @@ void(alert("Warnning!"))
 // Chrome 中即使 javascript:0; 也没变化，firefox中会变成一个字符串0
 <a href="javascript:0" rel="nofollow ugc">点击此处</a>
 ```
+
+# ES6
+
+## let&const
+var的缺陷：
+1. var可以重复声明
+2. var无法限制修改
+3. __var没有块级作用域__
+var的声明提升
+
+let去作用域
+const约等于final
+
+## 箭头函数
+```javascript
+/*
+function换成=>放在参数和函数体中间
+1. 如果没有参数，或是有多个蚕食就需要（）来定义参数列表
+2. 如果有一个参数，可以不用（）
+3. 如果函数体重只有一条语句，可以不用{}，就不用使用return
+*/
+const fun1 = function(x){
+    return x*x;
+};
+
+(x)=>{
+    return x*x
+};
+
+const fun = x => x*x;
+```
+普通函数的this，指向它的调用者，如果没有调用者则默认指向windows
+箭头函数的this，指向箭头函数定义时所在的对象，默认使用父级的this
+
+## 数组新增的高级方法
+filter
+map
+reduce
+
+some()只有一个元素符合就返回true
+every()所有元素符合才返回true
+```javascript
+let goods = [30,40,5,7,69,4,100,9];
+
+let goods1 = goods.filter(x => x>10);
+
+let goods2 = goods1.map(x => x*0.5);
+
+//s参数是9，n是数组中的元素15
+let sum = goods2.reduce((s, n) => s+n, 0)
+
+let sum = goods.filter(x=>x>10).map(x=>x*0.5).reduce((s, n)=>s+n);
+```
+## Set和Map的数据类型
+```javascript
+const obj = new Set();
+obj.add(1);
+obj.add(2);
+obj.add(['aa','b']);
+obj.has(4);
+obj.delete(1);
+obj.delete(5);
+obj.forEach(n=>console.log(n));
+
+const myMap = new Map();
+myMap.set(1,'a');
+myMap.set(2,'b');
+myMap.set(1,'c');
+myMap.set(1);
+myMap.size;
+```
+## 字符串新增功能
+- startWith 判断以什么字符开头 
+- endsWith 判断以什么字符结尾
+
+模板字符串，用反引号(`)表示，它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
+```javascript
+let title = 'test';
+let slogen = 'rua';
+let jsx = `
+    ${title}
+    ${slogen}
+`
+```
+
+## 解构赋值和扩展运算符
+```javascript
+let arr = ['a','b','c'];
+let [a,b,c] = arr;
+
+let arr1 = [1,2,3];
+let arr2 = [4,5,6];
+let arr3 = [...arr1,7,8,9,...arr2];
+console.log(arr3);
+
+function show(a,b,c){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+show(...arr1);
+
+function demo(...args){
+    console.log(args);
+}
+
+demo(1,2,3,4,5);
+```
+## class类概念
+```javascript
+class Person{
+    constructor(name, age, sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    say(){
+        console.log(this.name);
+        console.log(this.age);
+        console.log(this.sex);
+    }
+}
+
+class Student extends Person{
+    constructor(name,age,sex,school){
+        super(name,age,sex);
+        this.school = school;
+    }
+
+
+}
+const p = new Person("z",20,"male");
+const s = new Student("z",20,"male","unimelb");
+s.say();
+
+//JSON串行化和反串行化
+JSON.stringify(); //串行化
+JSON.parse(); //反串行化
+```
+
+## Module模块化编程export和import
+export命令：用于规定模块的对外接口
+import命令：用于输入其他模块提供的功能
+

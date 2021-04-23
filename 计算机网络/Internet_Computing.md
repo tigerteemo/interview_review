@@ -193,3 +193,45 @@ Domain Name System 域名解析系统
 ![迭代查询](./images/DNS迭代查询.png)
 #### 递归查询
 ![递归查询](./images/DNS递归查询.png)
+
+### HTTP链接类型
+- 非持久性链接(Nonpersistent HTTP)
+    - 每个TCP链接最多允许传输一个对象
+    - HTTP 1.0版本使用非持久性连接
+    - RTT（round trip time）
+        Total=2TTR+文件发送时间
+- 持久性链接（Persistent HTTP)
+    - 每个TCP链接允许传输多个对象
+    - HTTP 1.1版本默认使用持久性连接
+    - 发送响应后，服务器保持TCP连接的打开
+    - 后续的HTTP消息可以通过这个连接发送
+    - 无流水（pipeline）的持久性连接
+        - 客户端只有收到一个响应后才发送新的请求
+        - 每个被引用的对象耗时1个RTT
+    - 带有流水机制的持久性连接
+        - 客户端只要遇到一个引用对象就尽快发出请求
+        - 理想情况下，收到的所有引用对象只需耗时约1个RTT
+
+### HTTP请求消息
+- 请求消息（request）
+    ![HTTP请求格式](images/HTTP请求格式.png)
+    上传输入的方法
+    - POST方法
+        - 网页填写form
+        - 在请求消息的消息体（entity body）中上传客户端的输入
+    - URL方法
+        - 使用get方法
+        - 输入信息通过request行的url字段上传
+- 响应消息（response）
+    ![HTTP响应消息](images/HTTP响应消息.png)
+    HTTP响应状态代码
+    
+
+方法的类型
+GET 
+POST
+HEAD 请Server不要将请求的对象放入响应消息中
+PUT 将消息体中的文件上传到URL字段所指定的路径
+DELETE 删除URL字段所指定的文件
+
+·

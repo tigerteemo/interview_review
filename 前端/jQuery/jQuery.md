@@ -207,3 +207,323 @@ $("#p1").css("color","red")
   .slideDown(2000);
 ```
 
+# jQuery HTML
+
+## jQuery 获取内容和属性
+- text() - 设置或返回所选元素的文本内容
+- html() - 设置或返回所选元素的内容（包括 HTML 标记）
+  ```javascript
+  $("#btn1").click(function(){
+    alert("Text: " + $("#test").text());
+  });
+  $("#btn2").click(function(){
+    alert("HTML: " + $("#test").html());
+  });
+  ```
+- val() - 设置或返回表单字段的值
+```javascript
+$("#btn1").click(function(){
+  alert("值为: " + $("#test").val());
+});
+```
+__获取属性 - attr()__
+```javascript
+$("button").click(function(){
+  alert($("#runoob").attr("href"));
+});
+```
+## jQuery - 设置内容和属性
+```javascript
+$("#btn1").click(function(){
+    $("#test1").text("Hello world!");
+});
+$("#btn2").click(function(){
+    $("#test2").html("<b>Hello world!</b>");
+});
+$("#btn3").click(function(){
+    $("#test3").val("RUNOOB");
+});
+```
+text()、html() 以及 val() 的回调函数
+```javascript
+$("#btn1").click(function(){
+    $("#test1").text(function(i,origText){
+        return "旧文本: " + origText + " 新文本: Hello world! (index: " + i + ")"; 
+    });
+});
+ 
+$("#btn2").click(function(){
+    $("#test2").html(function(i,origText){
+        return "旧 html: " + origText + " 新 html: Hello <b>world!</b> (index: " + i + ")"; 
+    });
+});
+```
+__设置属性 - attr()__
+
+```javascript
+$("button").click(function(){
+  $("#runoob").attr("href","http://www.runoob.com/jquery");
+});
+
+/*attr() 方法也允许您同时设置多个属性。
+下面的例子演示如何同时设置 href 和 title 属性：*/
+$("button").click(function(){
+    $("#runoob").attr({
+        "href" : "http://www.runoob.com/jquery",
+        "title" : "jQuery 教程"
+    });
+});
+
+//回调函数
+$("button").click(function(){
+  $("#runoob").attr("href", function(i,origValue){
+    return origValue + "/jquery"; 
+  });
+});
+```
+## 添加元素
+- append() - 在被选元素的结尾插入内容
+  ```javascript
+    $("p").append("追加文本");
+  ```
+- prepend() - 在被选元素的开头插入内容
+  ```javascript
+  $("p").prepend("在开头追加文本");
+  ```
+通过 append() 和 prepend() 方法添加若干新元素
+```javascript
+function appendText(){
+    var txt1="<p>文本-1。</p>";              // 使用 HTML 标签创建文本
+    var txt2=$("<p></p>").text("文本-2。");  // 使用 jQuery 创建文本
+    var txt3=document.createElement("p");
+    txt3.innerHTML="文本-3。";               // 使用 DOM 创建文本 text with DOM
+    $("body").append(txt1,txt2,txt3);        // 追加新元素
+}
+```
+
+- after() - 在被选元素之后插入内容
+- before() - 在被选元素之前插入内容
+
+```javascript
+$("img").after("在后面添加文本");
+ 
+$("img").before("在前面添加文本");
+
+function afterText()
+{
+    var txt1="<b>I </b>";                    // 使用 HTML 创建元素
+    var txt2=$("<i></i>").text("love ");     // 使用 jQuery 创建元素
+    var txt3=document.createElement("big");  // 使用 DOM 创建元素
+    txt3.innerHTML="jQuery!";
+    $("img").after(txt1,txt2,txt3);          // 在图片后添加文本
+}
+```
+append/prepend和after/before的区别
+![appendprepend_afterbefore.png](appendprepend_afterbefore.png)
+
+## jQuery - 删除元素
+```javascript
+//jQuery remove() 方法删除被选元素及其子元素。
+$("#div1").remove();
+//jQuery empty() 方法删除被选元素的子元素。
+$("#div1").empty();
+//jQuery remove() 方法也可接受一个参数，允许您对被删元素进行过滤。
+//该参数可以是任何 jQuery 选择器的语法。
+$("p").remove(".italic");
+```
+## jQuery - 获取并设置 CSS 类
+- addClass()
+```javascript
+$("button").click(function(){
+  $("h1,h2,p").addClass("blue");
+  $("div").addClass("important");
+});
+//您也可以在 addClass() 方法中规定多个类：
+$("button").click(function(){
+  $("body div:first").addClass("important blue");
+});
+```
+- removeClass()
+```javascript
+$("button").click(function(){
+  $("h1,h2,p").removeClass("blue");
+});
+```
+- toggleClass()
+```javascript
+$("button").click(function(){
+  $("h1,h2,p").toggleClass("blue");
+});
+```
+## jQuery css() 方法
+```javascript
+//返回 CSS 属性
+$("p").css("background-color");
+//设置 CSS 属性
+$("p").css("background-color","yellow");
+//如需设置多个 CSS 属性，请使用如下语法：
+$("p").css({"background-color":"yellow","font-size":"200%"});
+```
+## jQuery 尺寸
+```javascript
+//width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。
+//height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。
+$("button").click(function(){
+  var txt="";
+  txt+="div 的宽度是: " + $("#div1").width() + "</br>";
+  txt+="div 的高度是: " + $("#div1").height();
+  $("#div1").html(txt);
+});
+//innerWidth() 方法返回元素的宽度（包括内边距）。
+//innerHeight() 方法返回元素的高度（包括内边距）。
+$("button").click(function(){
+  var txt="";
+  txt+="div 宽度，包含内边距: " + $("#div1").innerWidth() + "</br>";
+    txt+="div 高度，包含内边距: " + $("#div1").innerHeight();
+  $("#div1").html(txt);
+});
+//outerWidth() 方法返回元素的宽度（包括内边距和边框）。
+//outerHeight() 方法返回元素的高度（包括内边距和边框）。
+$("button").click(function(){
+  var txt="";
+  txt+="div 宽度，包含内边距和边框: " + $("#div1").outerWidth() + "</br>";
+  txt+="div 高度，包含内边距和边框: " + $("#div1").outerHeight();
+  $("#div1").html(txt);
+});
+```
+# jQuery 遍历
+## 祖先
+- parent()
+parent() 方法返回被选元素的直接父元素。
+该方法只会向上一级对 DOM 树进行遍历。
+  ```javascript
+  $(document).ready(function(){
+    $("span").parent();
+  });
+  ```
+- parents()
+  parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)。
+  ```javascript
+  //下面的例子返回所有 <span> 元素的所有祖先：
+  $(document).ready(function(){
+    $("span").parents();
+  });
+  //下面的例子返回所有 <span> 元素的所有祖先，并且它是 <ul> 元素：
+  $(document).ready(function(){
+    $("span").parents("ul");
+  });
+  ```
+- parentsUntil()
+parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。
+```javascript
+$(document).ready(function(){
+  $("span").parentsUntil("div");
+});
+```
+## 后代
+- children
+  children() 方法返回被选元素的所有直接子元素。
+```javascript
+$(document).ready(function(){
+  $("div").children();
+});
+//您也可以使用可选参数来过滤对子元素的搜索。
+//下面的例子返回类名为 "1" 的所有 <p> 元素，并且它们是 <div> 的直接子元素：
+$(document).ready(function(){
+  $("div").children("p.1");
+});
+```
+- find
+find() 方法返回被选元素的后代元素，一路向下直到最后一个后代。
+```javascript
+//下面的例子返回属于 <div> 后代的所有 <span> 元素：
+$(document).ready(function(){
+  $("div").find("span");
+});
+//下面的例子返回 <div> 的所有后代：
+$(document).ready(function(){
+  $("div").find("*");
+});
+```
+## 同胞
+- siblings()
+  ```javascript
+  //siblings() 方法返回被选元素的所有同胞元素。
+  $(document).ready(function(){
+    $("h2").siblings();
+  });
+  //下面的例子返回属于 <h2> 的同胞元素的所有 <p> 元素：
+  $(document).ready(function(){
+    $("h2").siblings("p");
+  });
+  ```
+- next()
+next() 方法返回被选元素的下一个同胞元素。该方法只返回一个元素。
+  ```javascript
+  //下面的例子返回 <h2> 的下一个同胞元素：
+  $(document).ready(function(){
+    $("h2").next();
+  });
+  ```
+- nextAll()
+nextAll() 方法返回被选元素的所有跟随的同胞元素。
+  ```javascript
+  //下面的例子返回 <h2> 的所有跟随的同胞元素：
+  $(document).ready(function(){
+    $("h2").nextAll();
+  });
+  ```
+- nextUntil()
+nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素。
+```javascript
+//下面的例子返回介于 <h2> 与 <h6> 元素之间的所有同胞元素：
+$(document).ready(function(){
+  $("h2").nextUntil("h6");
+});
+```
+- prev()
+  prev(), prevAll() 以及 prevUntil() 方法的工作方式与上面的方法类似，只不过方向相反而已：它们返回的是前面的同胞元素（在 DOM 树中沿着同胞之前元素遍历，而不是之后元素遍历）。
+- prevAll()
+- prevUntil()
+## 过滤
+- first()
+first() 方法返回被选元素的首个元素。
+  ```javascript
+  //下面的例子选取首个 <div> 元素内部的第一个 <p> 元素：
+  $(document).ready(function(){
+    $("div p").first();
+  });
+  ```
+- last()
+last() 方法返回被选元素的最后一个元素。
+  ```javascript
+  //下面的例子选择最后一个 <div> 元素中的最后一个 <p> 元素：
+  $(document).ready(function(){
+    $("div p").last();
+  });
+  ```
+- eq()
+eq() 方法返回被选元素中带有指定索引号的元素。
+```javascript
+//索引号从 0 开始，因此首个元素的索引号是 0 而不是 1。下面的例子选取第二个 <p> 元素（索引号 1）：
+$(document).ready(function(){
+  $("p").eq(1);
+});
+```
+- filter()
+filter() 方法允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回。
+```javascript
+//下面的例子返回带有类名 "url" 的所有 <p> 元素：
+$(document).ready(function(){
+  $("p").filter(".url");
+});
+```
+- not()
+not() 方法返回不匹配标准的所有元素。
+提示：not() 方法与 filter() 相反。
+```javascript
+//下面的例子返回不带有类名 "url" 的所有 <p> 元素：
+$(document).ready(function(){
+  $("p").not(".url");
+});
+```
