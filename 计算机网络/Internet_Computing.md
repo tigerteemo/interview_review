@@ -65,10 +65,10 @@ RARP协议（Reserve Address Resolution Protocol,逆地址解析协议）
 
 　　E类地址以1111开头，地址范围是240.0.0.0~255.255.255.255，E类地址为保留地址，供以后使用。
 
-![有类编址](/images/有类编址.png)
+![有类编址](./images/有类编址.png)
 
 特殊IP地址
-![特殊IP地址](/images/特殊IP地址.png)
+![特殊IP地址](./images/特殊IP地址.png)
 
 ### IP子网与子网划分
 IP地址

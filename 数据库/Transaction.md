@@ -17,30 +17,30 @@
 并发控制技术保证了事务的隔离性，使数据库的一致性状态不会因为并发执行的操作被破坏。
 日志回复技术保证了事务的原子性，使一致性状态不会因事务或系统故障被破坏。同时使已提交的对数据库的修改不会因为系统崩溃而丢失，保证了事务的持久性。
 
-![ACID](/images/acid.png)
+![ACID](./images/acid.png)
 
 ## 事务并发的问题
 脏读（dirty read）
 A事务读取B事务尚未提交的更改数据，并在这个数据的基础上操作。如果恰巧B事务回滚，那么A事务读到的数据根本是不被承认的。
-![dirty_read](/images/dirty_read.jpg)
+![dirty_read](./images/dirty_read.jpg)
 
 不可重复读（unrepeatable read）
 A事务读取了B事务已经提交的更改数据。
-![unrepeatable_read](/images/unrepeatable_read.jpg)
+![unrepeatable_read](./images/unrepeatable_read.jpg)
 
 幻读（phantom read）
 A事务读取B事务提交的新增数据，这是A事务将出现幻读的问题。幻读一般发生在计算统计数据的事务中。
-![phantom read](/images/phantom_read.jpg)
+![phantom read](./images/phantom_read.jpg)
 
 小结：不可重复读的和幻读很容易混淆，不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表.
 
 第一类丢失更新
 A事务撤销时，把已经提交的B事务的更新数据覆盖了。
-![第一类丢失更新](/images/updateLostA.jpg)
+![第一类丢失更新](./images/updateLostA.jpg)
 
 第二类丢失更新
 A事务覆盖B事务已经提交的数据。
-![第二类丢失更新](/images/updateLostB.jpg)
+![第二类丢失更新](./images/updateLostB.jpg)
 
 ## MySQL事务隔离级别
 |事务隔离级别|脏读|不可重复读|幻读|
@@ -68,7 +68,4 @@ A事务覆盖B事务已经提交的数据。
 提供严格的事务隔离，它要求事务序列化执行，事务只能一个接着一个地执行，但不能并发执行，如果仅仅通过“行级锁”是无法实现序列化的，必须通过其他机制保证新插入的数据不会被执行查询操作的事务访问到。序列化是最高的事务隔离级别，同时代价也是最高的，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻读
 
 解决了更新丢失、脏读、不可重复读、幻读(虚读)
-————————————————
-版权声明：本文为CSDN博主「zhouym_」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/zhouym_/article/details/90381606
 
