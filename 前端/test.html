@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .parent{
+            height: 100%;
+            width: 100%;
+        }
+
+        .child{
+            display: inline-block;
+            position: absolute;
+        }
+
+        #left{
+            background-color: red;
+            left: 0px;
+            height: inherit;
+            width: 20%;
+        }
+
+        #mid{
+            position: absolute;
+            background-color: yellow;
+            height: inherit;
+            left: 20%;
+            width: 60%;
+        }
+
+        #right{
+            background-color: skyblue;
+            right: 0px;
+            height: inherit;
+            width: 20%;
+        }
+
+        #inner{
+            background-color: aqua;
+            padding-top: 50%;
+            width: 50%;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child" id="left"></div>
+        <div class="child" id="mid">
+            <div id="inner"></div>
+            <div style="border: 2px solid #000; overflow: hidden;">
+                <div style="width: 100px;height: 100px;background: #eee;float: left;"></div>
+            </div>
+        </div>
+        <div class="child" id="right"></div>
+    </div>
+    <script>
+        console.log(window.history.state);
+    </script>
+</body>
+</html>
